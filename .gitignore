@@ -10,3 +10,7 @@ teensy/firmware/\.vscode/ipch/7d00e9011634d03e/firmware\.ipch
 teensy/firmware/\.vscode/\.browse\.c_cpp\.db-wal
 
 teensy/firmware/\.vscode/
+
+*.bin
+
+\.vscode/
