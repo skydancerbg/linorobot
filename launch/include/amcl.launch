@@ -1,5 +1,12 @@
 <launch>
+    <arg name="scan_topic" default="scan_filtered"/>
+
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
+
+        <!--Robco19: Or remap the scan topic - Stefan-->
+        <!-- <remap from="scan" to="scan_filtered" /> -->
+        <remap from="scan" to="$(arg scan_topic)" /> <!-- Stefan-->
+
         <param name="base_frame_id" value="base_footprint"/> <!-- Change this if you want to change your base frame id. -->
         <param name="gui_publish_rate" value="10.0"/> <!-- Maximum rate (Hz) at which scans and paths are published for visualization, -1.0 to disable. -->
         <param name="kld_err" value="0.05"/>
@@ -28,5 +35,6 @@
         <param name="transform_tolerance" value="1.25"/> <!-- Default 0.1; time with which to post-date the transform that is published, to indicate that this transform is valid into the future. -->
         <param name="update_min_a" value="0.2"/> <!-- Rotational movement required before performing a filter update. 0.1 represents 5.7 degrees  -->
         <param name="update_min_d" value="0.2"/> <!-- Translational movement required before performing a filter update. -->
+        
     </node>
 </launch>

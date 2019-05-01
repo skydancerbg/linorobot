@@ -1,0 +1,20 @@
+<!--###################################
+# Created By Stefan
+# SRG - 17.3.2019
+# Adds Realsense 435 camera to the bringup
+# TODO move this launch file to robco_onboard package in order
+# to use it with all of the Robco robots
+###################################-->
+
+<launch>
+
+    <!--Linorobot bringup: Starts the communication with the controler and the laser -->
+
+     <include file="$(find linorobot)/launch/bringup.launch" />
+
+    <!--Robco19: Start the onboard Realsense 435 camera-->
+
+     <include file="$(find linorobot)/launch/include/realsense_camera/realsense_camera.launch" />
+   
+
+</launch>

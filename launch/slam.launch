@@ -1,6 +1,10 @@
 <launch>
     <!-- Mapping package -->
-    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <!--<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">-->
+
+    <!--Robco19: Use the filtered laser scan as input for mapping-->
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" args="scan:=scan_filtered" respawn="false" output="screen">
+
         <param name="base_frame" value="/base_footprint" />
         <param name="odom_frame" value="/odom" />
         <param name="map_update_interval" value="15.0"/>

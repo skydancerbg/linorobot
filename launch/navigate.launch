@@ -1,6 +1,10 @@
 <launch>
     <!-- Map server -->
-    <arg name="map_file" default="$(find linorobot)/maps/house.yaml"/>
+    <!--<arg name="map_file" default="$(find linorobot)/maps/house.yaml"/>-->
+    
+    <!--Robco19: Start the node with extra argument map name and patht i.e. (find linorobot)/maps/name_of_map.yaml-->
+    <arg name="map_file" default="$(find linorobot)/maps/map.yaml"/>
+
     <node pkg="map_server" name="map_server"  type="map_server" args="$(arg map_file)" />
 
     <!-- AMCL used for localization -->

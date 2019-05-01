@@ -1,0 +1,23 @@
+<!--###################################
+# Created By Stefan
+# SRG - 17.3.2019
+# Loads realsense 435 camera for later use with ar_track_alvar and other
+# you can start the cammera from the command line by:
+# roslaunch realsense2_camera rs_camera.launch
+# TODO move this launch file to robco_onboard package in order to use it with all robots
+###################################-->
+
+<launch>
+    <!-- Start Realsensee 435 camera -->
+    <include file="$(find realsense2_camera)/launch/rs_camera.launch" />
+
+    <!-- Publish static transform of the camera. Define your sensor offset here -->
+    
+    <!--Robco19 plate diameter is 45.09 cm, radius is 22.545. Realsense 435 is mounted central and 2cm back from the front edge, 
+    so distance from center is 20.545cm or 0.20545 in meters, which we use below-->
+
+    <!--TODO Check the Realsense doc's for the displacement of the color camera and correct the values here:-->
+
+    <!--Robco19: Publish static transform of the camera_link using Realsense 435 current mount params (on Robco19)-->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_to_realsense_camera" args="0.1876 0 0.342 0 0 0   /base_link /camera_link"/>
+</launch>
