@@ -1,14 +1,36 @@
+
 obstacle_range: 2.5
 raytrace_range: 3.0
-footprint: [[-0.24, -0.22], [-0.24, 0.22], [0.24, 0.22], [0.24, -0.22]]
-inflation_radius: 0.55
+# Robco19: robot size approximation as square 0.45m
+footprint: [[-0.225, -0.225], [-0.225, 0.225], [0.225, 0.225], [0.225, -0.225]]
+# inflation_radius: 0.55
+# Robco19: Set smaller inflation radius
+inflation_radius: 0.50
 transform_tolerance: 0.5
 
 observation_sources: scan
 scan:
   data_type: LaserScan
   topic: scan
+  # Robco19: change the scan topic
+  # topic: scan_filtered
   marking: true
   clearing: true
 
 map_type: costmap
+
+
+# obstacle_range: 2.5
+# raytrace_range: 3.0
+# footprint: [[-0.24, -0.22], [-0.24, 0.22], [0.24, 0.22], [0.24, -0.22]]
+# inflation_radius: 0.55
+# transform_tolerance: 0.5
+
+# observation_sources: scan
+# scan:
+#   data_type: LaserScan
+#   topic: scan
+#   marking: true
+#   clearing: true
+
+# map_type: costmap
