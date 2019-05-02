@@ -1,0 +1,19 @@
+Teensy from PaulStoffregen 
+https://forum.pjrc.com/threads/27168-Teensy-3-1-and-quot-5V-tolerance-quot 
+
+I can tell you 5V tolerance is about inputs. That means you can connect some other device that sends a 5V signal to Teensy 3.2. Even though the chip is 3.3V, it will not be damaged if you connect a 5V signal to the digital pins.
+
+When the digital pins are used as outputs, they drive 3.3V output when high. The output is not 5V.
+
+The analog pins have a measurement range from 0 to 3.3V (when using VCC as your reference), or from 0 to 1.2V when using the internal 1.2V reference, or from 0 to your VREF, but VREF can not be higher than VCC (which is 3.3V).
+
+The analog pins which also have digital signal capability are 5V tolerant, which means analog signals up to 5V will not damage the chip. But voltages from 3.3V to 5V all measure the same, as the maximum.
+
+In general, when a chip is said to be "5V tolerant" (or 3.3V tolerant, in the case of newer 1.8V chips), that means it's been designed so it can withstand other chips driving it to those higher voltages. But it doesn't have the ability to output those voltages. When you see the term "tolerant" on any chip, you should understand that means the chip doesn't actually use that voltage. It merely means the chip is able to tolerate those voltages from other chips.
+
+When a chip is said to be not tolerant (or said to be "3.3V only"), that means it doesn't use the higher voltage and connecting those higher voltage signals could damage it. Today, only Teensy 3.2 is 5V tolerant. Teensy LC is 3.3V only. Teensy 2.0 and Teensy++ 2.0 are 5V only, or they can be configured for 3.3V by adding a MCP1825 regulator, but in that mode they become 3.3V only.
+
+On Teensy 3.2, the 5V tolerance is on the pins with digital I/O, even when used in analog mode. However, the analog only pins without digital features, A10, A11, A12, A13, A14/DAC, and VREF are *not* 5V tolerant. Applying 5V to any of those pins can destroy your Teensy.
+
+Hopefully this lengthy description clears up any questions about how Teensy works. Regarding circuits you wish to use with NPN and PNP transistors, maybe start a new thread with a schematic and clear description of what you're trying to accomplish.
+
